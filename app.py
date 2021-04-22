@@ -12,7 +12,7 @@ import pywhatkit
 
 app = Flask(__name__)
 
-
+print("hello")
 # @app.route('/')
 @app.route('/', methods=['GET','POST'])
 def set_alarm():

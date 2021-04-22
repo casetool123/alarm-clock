@@ -12,11 +12,16 @@
 
 <body>
     <h2>Alarm Clock</h2>
+    <p>--------------------------</p>
+    <button type="button" onclick="document.getElementById('display').innerHTML =Date()">See current Date and
+        Time</button>
+    <p id="display"></p>
+    <p>--------------------------</p><br>
 
 
     <form action="{{ url_for('set_alarm') }}" method="POST">
-        <p> Date format: (dd/mm/yyyy) </p>
-        <p> Alarm format: (hh:mm:ss)</p>
+        <p> Date format: (dd-mm-yyyy) </p>
+        <p> Alarm format: (hh:mm)</p>
         <br><br>
 
         <label for="schedule_date"> Enter the date</label>
@@ -34,11 +39,11 @@
     <!-- <button type="button"
         onclick="document.getElementById('t').innerHTML = ('Alarm has been set')">set_alarm</button><br> -->
     <p id="t"></p>
-    <p>--------------------------</p>
+    <!-- <p>--------------------------</p>
     <button type="button" onclick="document.getElementById('display').innerHTML =Date()">See current Date and
         Time</button>
     <p id="display"></p>
-    <p>--------------------------</p><br>
+    <p>--------------------------</p><br> -->
 
     <!-- <button type="submit" value="submit">ring_alarm</button> -->
 

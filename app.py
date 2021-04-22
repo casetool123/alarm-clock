@@ -12,20 +12,37 @@ import pywhatkit
 
 app = Flask(__name__)
 
-print("hello")
+# print("hello")
 # @app.route('/')
 @app.route('/', methods=['GET','POST'])
 def set_alarm():
     if request.method == "POST":
-        schedule_date = request.form.get('schedule_date')
+        schedule_date = str(request.form.get('schedule_date'))
         print("schedule_date is", schedule_date," ", type(schedule_date))
 
-        set_time = request.form.get('set_time')
-        print("set_time is", set_time," ", type(schedule_date))
+        set_time = str(request.form.get('set_time'))
+        print("set_time is", set_time," ", type(set_time))
 
-        print("time.localtime() is ",time.localtime()," ", type(schedule_date))
+        print("time.localtime() is ",time.localtime()," ", type(time.localtime()))
+        print("datetime.date.today() is " , datetime.date.today(), " ", type(datetime.date.today))
+        curr_date = str(datetime.date.today())
+        print(curr_date)
 
-        return "Schedule is " + schedule_date + " set_time is " + set_time
+        h= str(time.localtime().tm_hour)
+        m= str(time.localtime().tm_min)
+        print(h)
+        print(m)
+        # if h<10:
+        #     h = "0" + str(h)
+        # if m<10:
+        #     m = "0"+str(m)
+        curr_time = h + ":" + m
+        print(curr_time)
+        print(set_time)
+        print(curr_date)
+        print(schedule_date)
+
+        return "Schedule date is " + schedule_date + "   set_time is " + set_time
         # num = request.form.get('num')
         # f = Figlet(font ='5lineoblique')
         # print(f.renderText("Alarms has been set"))
@@ -34,6 +51,10 @@ def set_alarm():
         # print("----------------------")
         # print(now.strftime("%Y-%m-%d %H:%M:%S"))
         # print("----------------------")
+        while True:
+            if (curr_time == set_time) and  (curr_date == schedule_date):
+                print(f.renderText("BEEP BEEP IT'S TIME...  "))
+                pywhatkit.playonyt("programming in python")
 
     return render_template("index.html")
 
@@ -53,18 +74,15 @@ def set_alarm():
 #     return render_template("index.html")
 
 # @app.route('/')
-def ring_alarm():
-    schedule_date = request.form.get('schedule_date')
-    set_time = request.form.get('set_time')
-    while True:
-        if (time.localtime() == set_time) and  (datetime.date.today() == schedule_date):
-            print(f.renderText("BEEP BEEP IT;S TIME...  "))
-            pywhatkit.playonyt("programming in python")
-            # arr.reverse()
-            # arr.pop()
-            # arr.reverse()
-            # display()
-    return render_template("index.html")
+# def ring_alarm():
+#     schedule_date = request.form.get('schedule_date')
+#     set_time = request.form.get('set_time')
+#     while True:
+#         if (time.localtime() == set_time) and  (datetime.date.today() == schedule_date):
+#             print(f.renderText("BEEP BEEP IT;S TIME...  "))
+#             pywhatkit.playonyt("programming in python")
+            
+    # return render_template("index.html")
 
 
 if __name__ == '__main__':

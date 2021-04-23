@@ -23,20 +23,27 @@ def set_alarm():
         set_time = str(request.form.get('set_time'))
         print("set_time is", set_time," ", type(set_time))
 
-        print("time.localtime() is ",time.localtime()," ", type(time.localtime()))
+        # print("time.localtime() is ",time.localtime()," ", type(time.localtime()))
         print("datetime.date.today() is " , datetime.date.today(), " ", type(datetime.date.today))
         curr_date = str(datetime.date.today())
         print(curr_date)
 
-        h= str(time.localtime().tm_hour)
-        m= str(time.localtime().tm_min)
-        print(h)
-        print(m)
+        now = datetime.datetime.now()
+        hour = str(now.hour)
+        minute = str(now.minute)
+        # seconds = str(now.second)
+        curr_time = hour + ":" + minute 
+        print("Current time is: "  + curr_time)
+
+        # h= str(time.localtime().tm_hour)
+        # m= str(time.localtime().tm_min)
+        # print(h)
+        # print(m)
         # if h<10:
         #     h = "0" + str(h)
         # if m<10:
         #     m = "0"+str(m)
-        curr_time = h + ":" + m
+        # curr_time = h + ":" + m
         print(curr_time)
         print(set_time)
         print(curr_date)
@@ -51,6 +58,17 @@ def set_alarm():
         # print("----------------------")
         # print(now.strftime("%Y-%m-%d %H:%M:%S"))
         # print("----------------------")
+
+        # while True:
+        #     if (set_time == curr_time) and (curr_date == schedule_date):
+        #         print(f.renderText("BEEP BEEP IT'S TIME...  "))
+        #         pywhatkit.playonyt("programming in python")
+        #         break
+        #         # time.sleep(5)
+
+        #     break
+
+
         while True:
             if (curr_time == set_time) and  (curr_date == schedule_date):
                 print(f.renderText("BEEP BEEP IT'S TIME...  "))
@@ -87,3 +105,5 @@ def set_alarm():
 
 if __name__ == '__main__':
 	app.run(host = '127.0.0.1', port = '5000')
+
+

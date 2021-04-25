@@ -42,6 +42,7 @@ def set_alarm():
             if (curr_time == set_time) and  (curr_date == schedule_date):
                 # print(f.renderText("BEEP BEEP IT'S TIME...  "))
                 pywhatkit.playonyt("programming in python")
+                time.sleep(60)
 
         return "Schedule date is " + schedule_date + "   set_time is " + set_time
     return render_template("index.html")

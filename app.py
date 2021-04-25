@@ -6,13 +6,9 @@ import re
 from pyfiglet import Figlet
 import pywhatkit
 
-# def index(name):
-#     return '<h1>hello {}</h1>'.format(name)
-
 
 app = Flask(__name__)
 
-# print("hello")
 # @app.route('/')
 @app.route('/', methods=['GET','POST'])
 def set_alarm():
@@ -25,82 +21,30 @@ def set_alarm():
 
         # print("time.localtime() is ",time.localtime()," ", type(time.localtime()))
         print("datetime.date.today() is " , datetime.date.today(), " ", type(datetime.date.today))
-        curr_date = str(datetime.date.today())
-        print(curr_date)
+        
+        # print(curr_date)
 
-        now = datetime.datetime.now()
-        hour = str(now.hour)
-        minute = str(now.minute)
-        # seconds = str(now.second)
-        curr_time = hour + ":" + minute 
-        print("Current time is: "  + curr_time)
-
-        # h= str(time.localtime().tm_hour)
-        # m= str(time.localtime().tm_min)
-        # print(h)
-        # print(m)
-        # if h<10:
-        #     h = "0" + str(h)
-        # if m<10:
-        #     m = "0"+str(m)
-        # curr_time = h + ":" + m
-        print(curr_time)
-        print(set_time)
-        print(curr_date)
-        print(schedule_date)
-
-        return "Schedule date is " + schedule_date + "   set_time is " + set_time
-        # num = request.form.get('num')
-        # f = Figlet(font ='5lineoblique')
-        # print(f.renderText("Alarms has been set"))
-        # print()
-        # now = datetime.datetime.now()
-        # print("----------------------")
-        # print(now.strftime("%Y-%m-%d %H:%M:%S"))
-        # print("----------------------")
-
-        # while True:
-        #     if (set_time == curr_time) and (curr_date == schedule_date):
-        #         print(f.renderText("BEEP BEEP IT'S TIME...  "))
-        #         pywhatkit.playonyt("programming in python")
-        #         break
-        #         # time.sleep(5)
-
-        #     break
-
+        
+        
+        # print(curr_time)
+        # print(set_time)
+        # print(curr_date)
+        # print(schedule_date)
 
         while True:
+            curr_date = str(datetime.date.today())
+            now = datetime.datetime.now()
+            hour = str(now.hour)
+            minute = str(now.minute)
+            # seconds = str(now.second)
+            curr_time = hour + ":" + minute 
+            # print("Current time is: "  + curr_time)
             if (curr_time == set_time) and  (curr_date == schedule_date):
-                print(f.renderText("BEEP BEEP IT'S TIME...  "))
+                # print(f.renderText("BEEP BEEP IT'S TIME...  "))
                 pywhatkit.playonyt("programming in python")
 
+        return "Schedule date is " + schedule_date + "   set_time is " + set_time
     return render_template("index.html")
-
-
-# @app.route('/', methods =["GET", "POST"])
-# def gfg():
-#     if request.method == "POST":
-#        # getting input with name = fname in HTML form
-#        first_name = request.form.get("fname")
-#        # getting input with name = lname in HTML form 
-#        last_name = request.form.get("lname") 
-#        return "Your name is "+first_name + last_name
-#     return render_template("index.html")
-
-# @app.route('/')
-# def func():
-#     return render_template("index.html")
-
-# @app.route('/')
-# def ring_alarm():
-#     schedule_date = request.form.get('schedule_date')
-#     set_time = request.form.get('set_time')
-#     while True:
-#         if (time.localtime() == set_time) and  (datetime.date.today() == schedule_date):
-#             print(f.renderText("BEEP BEEP IT;S TIME...  "))
-#             pywhatkit.playonyt("programming in python")
-            
-    # return render_template("index.html")
 
 
 if __name__ == '__main__':

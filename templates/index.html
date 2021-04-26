@@ -4,20 +4,19 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>alarm</title>
+    <title>Youtube Alarm</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script> -->
+    <!-- <link rel='stylesheet' href="{{ url_for('static', filename='style.css')}}" type='text/css'> -->
+    <!-- <script src='main.js'></script> -->
 </head>
 
 <body>
-    <h2>Alarm Clock</h2>
+    <h1>Alarm Clock</h1>
     <p>--------------------------</p>
-    <button type="button" onclick="document.getElementById('display').innerHTML =Date()">See current Date and
-        Time</button>
+    <button type="button" onclick="document.getElementById('display').innerHTML =Date()">See current Date and Time</button>
     <p id="display"></p>
     <p>--------------------------</p><br>
-
+    <img src="{{ url_for('static', filename='image.jpg') }}" height="200px" weidth="200px" alt="clock image">
 
     <form action="{{ url_for('set_alarm') }}" method="POST">
         <p> Date format: (dd-mm-yyyy) </p>
@@ -31,13 +30,12 @@
         <input type="time" id="set_time" name="set_time"><br><br>
 
 
-        <button type="submit"
-            onclick="document.getElementById('t').innerHTML = ('Alarm has been set')">set_alarm</button><br>
+        <button type="submit" onclick="document.getElementById('t').innerHTML = ('Alarm has been set')">set_alarm</button><br>
 
     </form>
 
     <p id="t"></p>
-    
+
 
 </body>
 
